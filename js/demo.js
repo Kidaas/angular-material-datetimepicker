@@ -7,17 +7,21 @@
       'ngMaterialDatePicker'
     ])
     .controller('DemoCtrl', function ($scope) {
+      $scope.trigger = "Change not triggered !"
       $scope.date = new Date();
       $scope.time = new Date();
       $scope.dateTime = new Date();
       $scope.minDate = moment().subtract(1, 'month');
       $scope.maxDate = moment().add(1, 'month');
 
+      $scope.change = function() {
+        $scope.trigger = "Change triggered !";
+      };
     })
 
     .directive('exSourceCode', function () {
       return {
-        template: '<h4>{{title}}</h4><pre  hljs class="html"><code>{{sourceCode}}</code></pre>',
+        template: '<h4>{{title}}</h4><pre hljs class="html"><code>{{sourceCode}}</code></pre>',
         scope: {},
         link: function (scope, element, attrs) {
           var tmp = angular.element((element.parent()[0]).querySelector(attrs.target || 'md-input-container'));
