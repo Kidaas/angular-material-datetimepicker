@@ -11,7 +11,9 @@
     "angular-material",
     "responsive",
     "front-end",
-    "web"
+    "web",
+    "datetime",
+    "picker"
   ],
   "homepage": "https://logbon72.github.io/angular-material-datetimepicker",
   "main": [
@@ -28,7 +30,7 @@
     "test-infra"
   ],
   "dependencies": {
-    "momentjs": "~2.10.2",
+    "momentjs": "~2.11.2",
     "angular-material": "~1.0.6"
   }
 }

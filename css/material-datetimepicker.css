@@ -1,3 +1,11 @@
+/*.greenHeader {
+    background: #689F38;
+}
+
+.greenBody {
+    background: #8BC34A
+}*/
+
 md-dialog.dtp {
     font-size: 14px;
     line-height: 1.42857143;
@@ -5,7 +13,6 @@ md-dialog.dtp {
     background-color: #fff;
     max-height: none;
 }
-
 
 .dtp *:focus {
     outline: none !important;
@@ -309,4 +316,3 @@ md-dialog.dtp {
 .dtp .center {
     text-align: center;
 }
-

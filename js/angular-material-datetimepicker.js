@@ -67,19 +67,19 @@
     + '</md-dialog>';
 
   angular.module(moduleName, ['ngMaterial'])
-    .provider('mdcDatetimePicker', function () {
+    .provider('mdcDatetimePickerDefaultLocale', function () {
       this.locale = 'en';
 
       this.$get = function () {
-        return this;
+        return this.locale;
       };
 
       this.setDefaultLocale = function (localeString) {
         this.locale = localeString;
       };
     })
-    .directive('mdcDatetimePicker', ['$mdDialog', '$timeout',
-      function ($mdDialog, $timeout) {
+    .directive('mdcDatetimePicker', ['$mdDialog',
+      function ($mdDialog) {
 
         return {
           restrict: 'A',
@@ -91,14 +91,12 @@
             minDate: '=',
             maxDate: '=',
             shortTime: '=',
-            weekStart: '=',
             format: '@',
             cancelText: '@',
             okText: '@',
             lang: '@',
             amText: '@',
-            pmText: '@',
-            ngChange: '&'
+            pmText: '@'
           },
           link: function (scope, element, attrs, ngModel) {
             var isOn = false;
@@ -156,7 +154,6 @@
                 })
                 .then(function (v) {
                   scope.currentDate = v ? v._d : v;
-                  $timeout(scope.ngChange, 0);
                   isOn = false;
                 }, function () {
                   isOn = false;
@@ -168,7 +165,7 @@
       }])
   ;
 
-  var PluginController = function ($scope, $mdDialog, mdcDatetimePicker) {
+  var PluginController = function ($scope, $mdDialog, mdcDatetimePickerDefaultLocale) {
     this.currentView = VIEW_STATES.DATE;
     this._dialog = $mdDialog;
 
@@ -185,7 +182,7 @@
       minDate: null,
       maxDate: null,
       currentDate: null,
-      lang: mdcDatetimePicker.locale,
+      lang: mdcDatetimePickerDefaultLocale,
       weekStart: 0,
       shortTime: false,
       cancelText: 'Cancel',
@@ -198,7 +195,7 @@
     this.params = angular.extend(this.params, this.options);
     this.init();
   };
-  PluginController.$inject = ['$scope', '$mdDialog', 'mdcDatetimePicker'];
+  PluginController.$inject = ['$scope', '$mdDialog', 'mdcDatetimePickerDefaultLocale'];
   PluginController.prototype = {
     init: function () {
       this.timeMode = this.params.time && !this.params.date;

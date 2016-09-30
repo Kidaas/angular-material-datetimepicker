@@ -4,8 +4,8 @@ Originally designed for Bootstrap Material, this has been modified to work with 
 
 - Double click to select date or time
 - Swipe left to go to next month or Swipe right to go to previous month.
-
-
+- Multilanguage support
+- ng-change support
 
 ## Updates
 
@@ -13,6 +13,8 @@ Originally designed for Bootstrap Material, this has been modified to work with 
 
 | Date				| Author			| Description											 |
 | ----------------- | ----------------- | ----------- |
+| 2016-09-17        | Kidaas            | Add multilanguage support |
+| 2016-09-17        | Kidaas            | Add week start support (ex: Monday is the first day of week) |
 | 2015-11-12		| logbon72		    | Adapted plugin for Angular Material |
 | 2015-10-19		| benletchford		| Fixed not being able to tab into input				 |
 | 2015-10-19		| drblue 			| Fixed erroneous package.json-file 					 |
@@ -27,12 +29,12 @@ Originally designed for Bootstrap Material, this has been modified to work with 
 | 2015-04-10		| Peterzen			| Added bower and requirejs support						 |
 | 2015-04-08		| T00rk				| Fixed problem on locale switch						 |
 | 2015-03-04		| T00rk				| Added Time picker										 |
-(\*) File names have been changed 
+(\*) File names have been changed
 
 bootstrap-material-datepicker.js => bootstrap-material-date**time**picker.js
 
 bootstrap-material-datepicker.css => bootstrap-material-date**time**picker.css
-	
+
 ### Dependencies
 
 Depends on the following library:
@@ -50,7 +52,7 @@ bower install angular-material-datetimepicker
 
 ## Live Example
 
-Click [here](http://logbon72.github.io/angular-material-datetimepicker) to see live examples.
+Click [here](http://kidaas.github.io/angular-material-datetimepicker) to see live examples.
 
 ## Usage
 
@@ -73,7 +75,8 @@ This plugin exposes a directive which should be used as an attribute for an inpu
                placeholder="Time"
                min-date="minDate"
                format="hh:mm a"
-               ng-model="time">
+               ng-model="time"
+               ng-change="change()">
     </md-input-container>
 ```
 
@@ -82,9 +85,10 @@ This plugin exposes a directive which should be used as an attribute for an inpu
 
 The directive accepts several attributes which are described below:
 
-| Name				| Type							| Description									|
-| ----------------- | ----------------------------- | --------------------------------------------- |
+| Name				| Type							| Description            |
+| ----------------- | ----------------------------- |----------------------- |
 | **ng-model**	    | (String\|Date\|Moment)		| Initial Date or model to assign the date to|
+| **ng-change** | Expression |	Expression to evaluate upon change in input value. |
 | **format**		| String						| [MomentJS Format](momentjs.com/docs/#/parsing/string-format/),defaults to `HH:mm` for time picker only, `YYYY-MM-DD` for date picker only and `YYYY-MM-DD HH:mm` for both timepicker and date picker |
 | **short-time**	| Boolean						| true => Display 12 hours AM\|PM 				|
 | **min-date**		| (String\|Date\|Moment)		| Minimum selectable date						|

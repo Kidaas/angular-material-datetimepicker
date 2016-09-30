@@ -13,7 +13,6 @@
       $scope.dateTime = new Date();
       $scope.minDate = moment().subtract(1, 'month');
       $scope.maxDate = moment().add(1, 'month');
-
       $scope.change = function() {
         $scope.trigger = "Change triggered !";
       };
@@ -29,9 +28,11 @@
             scope.title = attrs.title || "Source Code";
             var sourceCode = tmp[0].outerHTML
               .replace('ng-model=', 'angularModel=')
+              .replace('ng-change=', 'angularChange=')
               .replace(/ng-[a-z\-]+/g, '')
               .replace(/ +/g, ' ')
               .replace('angularModel=', 'ng-model=')
+              .replace('angularChange=', 'ng-change=')
               ;
             scope.sourceCode = style_html(sourceCode, {
               'indent_size': 2,
