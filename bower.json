@@ -1,7 +1,7 @@
 {
   "name": "angular-material-datetimepicker",
   "description": "A datetime picker for AngularJS Material",
-  "version": "1.4.1",
+  "version": "1.4.2",
   "keywords": [
     "css",
     "js",
@@ -15,7 +15,7 @@
     "datetime",
     "picker"
   ],
-  "homepage": "https://logbon72.github.io/angular-material-datetimepicker",
+  "homepage": "https://kidaas.github.io/angular-material-datetimepicker",
   "main": [
     "js/angular-material-datetimepicker.js",
     "css/material-datetimepicker.css"
@@ -30,7 +30,7 @@
     "test-infra"
   ],
   "dependencies": {
-    "momentjs": "~2.11.2",
+    "moment": "~2.11.2",
     "angular-material": "~1.0.6"
   }
 }
