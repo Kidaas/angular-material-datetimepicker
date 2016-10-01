@@ -78,14 +78,15 @@
         this.locale = localeString;
       };
     })
-    .directive('mdcDatetimePicker', ['$mdDialog',
-      function ($mdDialog) {
+    .directive('mdcDatetimePicker', ['$mdDialog', '$timeout',
+      function ($mdDialog, $timeout) {
 
         return {
           restrict: 'A',
           require: 'ngModel',
           scope: {
             currentDate: '=ngModel',
+            ngChange: '&',
             time: '=',
             date: '=',
             minDate: '=',
@@ -154,6 +155,7 @@
                 })
                 .then(function (v) {
                   scope.currentDate = v ? v._d : v;
+                  $timeout(scope.ngChange, 0);
                   isOn = false;
                 }, function () {
                   isOn = false;
@@ -165,7 +167,11 @@
       }])
   ;
 
-  var PluginController = function ($scope, $mdDialog, mdcDatetimePickerDefaultLocale) {
+  var PluginController = function (
+    $scope,
+    $mdDialog,
+    mdcDatetimePickerDefaultLocale
+  ) {
     this.currentView = VIEW_STATES.DATE;
     this._dialog = $mdDialog;
 
@@ -183,7 +189,7 @@
       maxDate: null,
       currentDate: null,
       lang: mdcDatetimePickerDefaultLocale,
-      weekStart: 0,
+      weekStart: 1,
       shortTime: false,
       cancelText: 'Cancel',
       okText: 'OK',
